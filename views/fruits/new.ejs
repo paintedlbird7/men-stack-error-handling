@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create a Fruit</title>
+    <style>
+      input:invalid {
+        border: 1px solid red;
+      }
+    </style>
   </head>
+  
   <body>
     <h1>Create a New Fruit!</h1>
-    <form action="/fruits" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name" />
-      <button type="submit">Add fruit</button>
-    </form>
+
+    <% if (typeof errorMessage !== 'undefined') { %>
+      <p style="color: red;"><%= errorMessage %></p>
+    <% } %>
+
+<form action="/fruits" method="POST">
+    <input 
+      id="name"
+      type="text" 
+      name="name" 
+      required
+    >
+    <button type="submit">Submit</button>
+  </form>
+  
+    
     <a href="/fruits">Back to fruits index</a>
   </body>
 </html>

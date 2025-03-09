@@ -8,10 +8,18 @@ router.get('/new', (req, res) => {
   res.render('fruits/new.ejs');
 });
 
-router.post('/', async (req, res) => {
-  await Fruit.create(req.body);
-  res.redirect('/fruits');
+router.post("/", async (req, res) => {
+  try {
+    if (!req.body.name.trim()) {
+      throw new Error("Invalid input: The name field cannot be empty!");
+    }
+    await Fruit.create(req.body);
+    res.redirect("/fruits");
+  } catch (err) {
+    res.render("error.ejs", { msg: err.message });
+  }
 });
+
 
 router.get('/', async (req, res) => {
   const foundFruits = await Fruit.find();
