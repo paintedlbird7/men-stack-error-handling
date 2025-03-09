@@ -8,10 +8,15 @@
   <body>
     <a href="/fruits/new">Create a fruit</a>
     <h1>Here Are All the Fruits</h1>
+    
+    <% if (typeof message !== 'undefined') { %>
+      <p><%= message %></p>
+    <% } %>
+
     <ul>
-      <% fruits.forEach((fruit)=> { %>
-      <li><%= fruit.name %></li>
-      <% }) %>
+      <% fruits.forEach((fruit) => { %>
+        <li><%= fruit.name %></li>
+      <% }); %>
     </ul>
   </body>
 </html>

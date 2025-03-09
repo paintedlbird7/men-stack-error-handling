@@ -20,6 +20,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+// controllers/fruits.js
+router.post("/", async (req, res) => {
+  try {
+    await Fruit.create(req.body);
+    req.session.message = "Fruit successfully created.";
+    res.redirect("/fruits");
+  } catch (err) {
+    req.session.message = err.message;
+    res.redirect("/fruits");
+  }
+});
+
 
 router.get('/', async (req, res) => {
   const foundFruits = await Fruit.find();
