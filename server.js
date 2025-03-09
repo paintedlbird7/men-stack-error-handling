@@ -40,6 +40,11 @@ app.get('/vip-lounge', (req, res) => {
   }
 });
 
+// Handling undefined routes
+// app.get("*", function (req, res) {
+//   res.render("error.ejs", { msg: "Page not found!" });
+// });
+
 app.use('/auth', authController);
 app.use('/fruits', fruitsController); // add this
 
